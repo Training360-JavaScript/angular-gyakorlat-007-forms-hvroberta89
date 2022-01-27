@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-8 offset-2">
+    <form (ngSubmit)="onUpdate()" novalidate
+      #eventForm="ngForm" *ngIf="event">
+
+      <div class="form-group">
+        <label for="eventName">Name</label>
+        <input id="eventName" name="name"
+        [(ngModel)]="event.name" #eventName="ngModel"
+        type="text" class="form-control"
+        required pattern=".{8,}">
+        <div class="error-message" [hidden]="eventName.valid || eventName.pristine">
+          Please choose a name for the event.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="eventDate">Date</label>
+        <input id="eventDate" name="Date"
+        [(ngModel)]="event.date" #eventDate="ngModel"
+        type="text" class="form-control"
+        required>
+        <div class="error-message" [hidden]="eventDate.valid || eventDate.pristine">
+          Please choose a date for the event.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="eventTime">Time</label>
+        <input id="evenTime" name="time"
+        [(ngModel)]="event.time" #eventTime="ngModel"
+        type="text" class="form-control"
+        required>
+        <div class="error-message" [hidden]="eventTime.valid || eventTime.pristine">
+          Please choose a time for the event.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="eventLocation">Location</label>
+        <input id="eventLocation" name="location"
+        [(ngModel)]="event.location" #eventLocation="ngModel"
+        type="text" class="form-control"
+        required>
+        <div class="error-message" [hidden]="eventLocation.valid || eventLocation.pristine">
+          Please choose a location for the event.
+        </div>
+      </div>
+
+      <button [disabled]="!eventForm.form.valid" type="submit" class="btn btn-success">
+        Update
+      </button>
+    </form>
+  </div>
+</div>
